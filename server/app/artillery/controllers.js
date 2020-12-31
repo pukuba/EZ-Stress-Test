@@ -16,7 +16,7 @@ const getArtillery = (req, res) => {
     const query = `artillery quick --duration ${duration} --rate ${arrivalRate} -n ${clientCount} ${address} -o ${filePath}/${fileName}.json`
 
     exec(query, (error, stdout, stderr) => {
-        if (error || stderr) res.status(400).error("cammand error")
+        if (error || stderr) res.status(400).send("exec Error")
         const jsonFile = readFileSync(`${filePath}/${fileName}.json`, 'utf-8')
         const json = JSON.parse(jsonFile)
         console.log(json)
