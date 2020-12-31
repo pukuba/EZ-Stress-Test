@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "set": "npm install && npm install -g artillery"
+    "set": "npm install && npm install -g artillery --unsafe-perm=true --allow-root"
   },
   "author": "",
   "license": "ISC",
