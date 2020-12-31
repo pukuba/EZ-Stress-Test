@@ -10,13 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-express": "^2.19.1",
     "artillery": "^1.6.1",
     "cors": "^2.8.5",
     "crypto-random-string": "^3.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "graphql-playground-middleware-express": "^1.7.22",
     "pm2": "^4.5.1",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^4.1.6"
