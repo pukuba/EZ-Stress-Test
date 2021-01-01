@@ -3,7 +3,7 @@ version: "3.8"
 services:
   proxy:
     image: nginx:latest   
-    container_name: proxy 
+    container_name: nginx 
     ports: 
       - "80:80"          
     volumes:
@@ -12,7 +12,7 @@ services:
   express:
     build:
       context: ./server  
-    container_name: express
+    container_name: server
   
     volumes:
       - ./server:/server 
