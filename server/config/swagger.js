@@ -19,7 +19,7 @@ const swaggerDefinition = {
     ],
     "paths": {
         "/artillery": {
-            "get": {
+            "post": {
                 "description": "Get Stress",
                 "parameters": [
                     {
