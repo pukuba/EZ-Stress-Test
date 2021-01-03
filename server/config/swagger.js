@@ -7,7 +7,7 @@ const swaggerDefinition = {
         "version": "1.0.0",
         "description": "REST API"
     },
-    "basePath": "pukuba.ga/",
+    "basePath": "/",
     "schemes": [
         "http"
     ],
