@@ -3,11 +3,11 @@ const path = require('path')
 const yaml = require('js-yaml')
 
 const yamlParse = (stdout) => {
-    let strarr = [], cnt = 0
+    let strArr = [], cnt = 0
     for (let i = stdout.length - 1; i; i--) {
         if (cnt >= 5) break
         if (stdout[i] == 'S' || cnt >= 3) cnt++
-        strarr.unshift(stdout[i])
+        strArr.unshift(stdout[i])
     }
     const resultYaml = strarr.join("")
     const obj = yaml.load(resultYaml, { encoding: 'utf-8' })
