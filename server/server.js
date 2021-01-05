@@ -4,10 +4,11 @@ const swaggerUI = require('swagger-ui-express')
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerOptions = require('./config/swagger')
 const app = express()
-
+const cors = require('cors')
 require('dotenv').config()
 
 const port = process.env.PORT2 || 1080
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('', routes)
