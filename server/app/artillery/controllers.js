@@ -26,6 +26,7 @@ const getArtillery = (req, res) => {
     }
     else {
         const query = `artillery quick --duration ${duration} --rate ${arrivalRate} -n ${clientCount} ${address}`
+        console.log(query)
         try {
             exec(query, (error, stdout, stderr) => {
                 if (error || stderr) res.status(400).json({ error: 'exec error' })
