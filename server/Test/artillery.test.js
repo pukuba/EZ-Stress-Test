@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const assert = require('assert')
 
-const endPoint = `http://localhost:1008/artillery`
+const endPoint = `http://localhost:1080/artillery`
 
 describe(`/artillery Test`, () => {
     it(`Local Test - 1`, async () => {
