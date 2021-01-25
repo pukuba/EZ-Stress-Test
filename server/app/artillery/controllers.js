@@ -14,7 +14,12 @@ const yamlParse = (stdout) => {
     return JSON.parse(JSON.stringify(obj))
 }
 
-const getArtillery = (req, res) => {
+const isURL = (url) => {
+    const str = /^http[s]?\:\/\//i
+    return str.test(url)
+}
+
+const getArtillery = (req, res, next) => {
     const {
         address,
         duration,
@@ -26,24 +31,30 @@ const getArtillery = (req, res) => {
         res.status(412).json({ error: "empty" })
     }
 
-    if (typeof address !== "string" || typeof duration !== "number" || typeof arrivalRate !== "number" || typeof clientCount !== "number") {
+    else if (typeof address !== "string" || typeof duration !== "number" || typeof arrivalRate !== "number" || typeof clientCount !== "number") {
         res.status(412).json({ error: "type" })
     }
 
-    if (arrivalRate * clientCount > 1000) {
+    else if (arrivalRate * clientCount > 1000 || duration > 30) {
         res.status(401).json({ error: "auth" })
+    }
+
+    else if (!isURL(address)) {
+        res.status(412).json({ error: "url" })
     }
 
     else {
         const query = `artillery quick --duration ${duration} --rate ${arrivalRate} -n ${clientCount} ${address}`
         console.log(query)
+
         try {
             exec(query, (error, stdout, stderr) => {
                 if (error || stderr) res.status(400).json({ error: 'exec error' })
                 const resultJson = yamlParse(stdout)
                 res.status(200).json(resultJson)
             })
-        } catch {
+        } catch (e) {
+            console.log(e)
             res.status(400).json({ error: 'exec error' })
         }
 

@@ -67,7 +67,7 @@ describe(`/artillery Test`, () => {
             headers: { 'Content-Type': 'application/json' },
         })
         const json = await result.json()
-        assert.strictEqual(result.status, 400)
-        assert.strictEqual(json.error, 'body error')
+        assert.strictEqual(result.status, 412)
+        assert.strictEqual(json.error, 'empty')
     })
 })
