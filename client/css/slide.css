@@ -1,0 +1,25 @@
+#animated-background {
+  animation: bgfade 40s infinite;
+  background-size: cover;
+  background-position: center;
+  background-color: #000;
+  position: relative;
+}
+
+@keyframes bgfade {
+  0% {
+    background-image: url(../public/back1.png);
+  }
+  25% {
+    background-image: url(../public/back2.png);
+  }
+  50% {
+    background-image: url(../public/back3.png);
+  }
+  75% {
+    background-image: url(../public/back4.png);
+  }
+  100% {
+    background-image: url(../public/back5.png);
+  }
+}

@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "cd Test && mocha --timeout 10000 ./*.test.js",
-    "start": "node server.js"
+    "test": "cd server && cd Test && mocha --timeout 10000 ./*.test.js",
+    "start": "node server/server.js"
   },
   "author": "",
   "license": "ISC",

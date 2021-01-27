@@ -1,8 +1,10 @@
 FROM node:14
 
-WORKDIR /server
+RUN mkdir -p /app
 
-COPY . .
+WORKDIR /app
+
+ADD ./ /app
 
 RUN npm install 
 

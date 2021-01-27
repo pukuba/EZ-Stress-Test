@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/loading.css" />
+    <link rel="stylesheet" type="text/css" href="./css/slide.css" />
+    <script src="./js/api.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Signika:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main" style="width: 100%; height: 102%;" id="animated-background">
+        <div id="wrapper">
+            <div class="logo">Server Overload Test</div>
+            <div id="main">
+                <form method="post" id="forms">
+                    <input type="text" name="address" class="address" placeholder="http(s)://www.example.com">
+                    <input type="button" onclick="api();" value="Test" />
+                    <label class="num" for="duration">지속시간</label>
+                    <label class="num" for="arrivalRate">접속횟수</label>
+                    <label class="num" for="clientCount">접속인원</label></br>
+                    <input type="number" name="duration" min="-1" max="30">
+                    <input type="number" name="arrivalRate" min="-1">
+                    <input type="number" name="clientCount" min="-1">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="end" id="end" style="width: 100%; height: 97%; display: none;">
+        <div class="load" id="load" style="display: none;">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="result" class="result" style="display: none;">
+            <h2 id="time" class="time">Test Time : </h2>
+            <div class="top">
+                <div id="code" class="code">
+                    <h3>Code</h3>
+                    <table class="code_table">
+                        <tr>
+                            <td class="codes">200</td>
+                            <td id="end_200">Null</td>
+                        </tr>
+                        <tr>
+                            <td class="codes">400</td>
+                            <td id="end_400">Null</td>
+                        </tr>
+                    </table>
+                    <div class="json">
+                        <pre>
+                            <code id="json"></code>
+                        </pre>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <h3>Scenario Count</h3>
+                    <table class="scenario_table">
+                        <tr>
+                            <td>0</td>
+                            <td id="scenario_0">Null</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="graph">
+                <h1 class="chart">Chart</h1>
+                <div id="chartContainer">
+                    <canvas id="myChart" width="500" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

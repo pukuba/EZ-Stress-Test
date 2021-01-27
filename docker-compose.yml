@@ -15,6 +15,6 @@ services:
   express:
     container_name: server
     build:
-      context: ./server  
+      context: ./  
 
     restart: "unless-stopped"
