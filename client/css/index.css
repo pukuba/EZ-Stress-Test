@@ -157,3 +157,17 @@ pre code {
   top: 114%;
   right: 4%;
 }
+
+.error span {
+  font-size: 3em;
+  font-weight: 700px;
+}
+
+#close {
+  float: right;
+  display: inline-block;
+  padding: 0px 5px;
+  font-weight: 700;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 2rem;
+}

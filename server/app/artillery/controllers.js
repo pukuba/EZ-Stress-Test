@@ -1,17 +1,15 @@
 const { exec } = require('child_process')
 const yaml = require('js-yaml')
 
-const yamlParse = (stdout) => {
-    const strArr = []
-    for (let i = stdout.length - 1, cnt = 0; i; i--) {
-        if (cnt >= 5) break
-        if (stdout[i] == 'S' || cnt >= 3) cnt++
-        strArr.unshift(stdout[i])
-    }
+const yamlLoop = (str, cnt, idx) => {
+    if (cnt == 5) return ""
+    if (str[idx] == 'S' || cnt >= 3) cnt++
+    return yamlLoop(str, cnt, idx - 1) + str[idx]
+}
 
-    const resultYaml = strArr.join("")
-    const obj = yaml.load(resultYaml, { encoding: 'utf-8' })
-    return JSON.parse(JSON.stringify(obj))
+const yamlParse = (stdout) => {
+    const resultString = yamlLoop(stdout, 0, stdout.length - 1)
+    return obj = yaml.load(resultString, { encoding: 'utf-8' })
 }
 
 const isURL = (url) => {
@@ -19,7 +17,7 @@ const isURL = (url) => {
     return str.test(url)
 }
 
-const getArtillery = (req, res, next) => {
+const getArtillery = (req, res) => {
     const {
         address,
         duration,
@@ -41,6 +39,10 @@ const getArtillery = (req, res, next) => {
 
     else if (!isURL(address)) {
         res.status(412).json({ error: "url" })
+    }
+
+    else if (duration < 0 || arrivalRate < 0 || clientCount < 0) {
+        res.status(412).json({ error: "minus" })
     }
 
     else {

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>EZ-Stress-Test</title>
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <link rel="stylesheet" type="text/css" href="./css/loading.css" />
     <link rel="stylesheet" type="text/css" href="./css/slide.css" />
@@ -30,10 +30,18 @@
                     <label class="num" for="duration">지속시간</label>
                     <label class="num" for="arrivalRate">접속횟수</label>
                     <label class="num" for="clientCount">접속인원</label></br>
-                    <input type="number" name="duration" min="-1" max="30">
-                    <input type="number" name="arrivalRate" min="-1">
-                    <input type="number" name="clientCount" min="-1">
+                    <input type="number" name="duration">
+                    <input type="number" name="arrivalRate">
+                    <input type="number" name="clientCount">
                 </form>
+
+                <div class="error" id="error" style="display: none;" onclick="x();">
+                    <span id='close' onclick="this.parentNode.style.display = 'none';">&times;</span>
+                    <span>Error</span><br><br>
+
+                    지속 시간은 30초보다 짧아야하고,<br>
+                    접속횟수 * 접속인원은 1000 보다 작야아한다.
+                </div>
             </div>
         </div>
     </div>
@@ -51,14 +59,10 @@
             <div class="top">
                 <div id="code" class="code">
                     <h3>Code</h3>
-                    <table class="code_table">
+                    <table class="code_table" id="code_table">
                         <tr>
-                            <td class="codes">200</td>
-                            <td id="end_200">Null</td>
-                        </tr>
-                        <tr>
-                            <td class="codes">400</td>
-                            <td id="end_400">Null</td>
+                            <td class="codes">Null</td>
+                            <td>Null</td>
                         </tr>
                     </table>
                     <div class="json">

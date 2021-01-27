@@ -25,7 +25,7 @@ const api = async () => {
     document.getElementById("result").style.display = "none"
     document.getElementById("load").style.display = "block"
 
-    fnMove()
+
 
     const val = document.getElementById("forms")
 
@@ -33,24 +33,29 @@ const api = async () => {
     document.getElementById("result").style.display = "block"
     document.getElementById("load").style.display = "none"
 
+    if (val[3].value * val[4].value > 1000 || val[2].value > 30) {
+        document.getElementById("error").style.display = "block";
+    }
+
     if (all_list["Error"] != undefined || val[3].value * val[4].value >= 1000) {
         document.getElementById("result").innerHTML = "<h1 style='text-align: center;'>Error</h1>"
         document.getElementById("result").style.backgroundColor = "rgba(204, 91, 73, 0.1)"
         document.getElementById("result").style.borderColor = "#CC5B49"
     }
     else {
+        fnMove()
         //print time
         test_time()
 
         document.getElementById("json").textContent = JSON.stringify(all_list, undefined, 2)
 
         //print Codes
-        if (all_list["Codes"][200] == undefined) all_list["Codes"][200] = "Null"
-        if (all_list["Codes"][400] == undefined) all_list["Codes"][400] = "Null"
-
-        document.getElementById("end_200").innerHTML = all_list["Codes"][200]
-        document.getElementById("end_400").innerHTML = all_list["Codes"][400]
-
+        let tag = "";
+        for (const row in all_list["Codes"]) {
+            if (all_list["Codes"][Number(row)] == undefined) all_list["Codes"][Number(row)] = "Null";
+            tag += "<tr><td class='codes'>" + row + "</td><td>" + all_list["Codes"][Number(row)] + "</td></tr>"
+        }
+        document.getElementById("code_table").innerHTML = tag;
         //print Scenario Counts
         document.getElementById("scenario_0").innerHTML = all_list["Scenario counts"][0]
 
@@ -88,13 +93,13 @@ const api = async () => {
     }
 }
 
-function test_time() {
+const test_time = () => {
     var now = new Date()
     now = now.toUTCString()
     document.getElementById("time").innerHTML = "Test Time : " + now
 }
 
-function fnMove() {
+const fnMove = () => {
     const offset = $("#end").offset()
     $('html, body').animate({ scrollTop: offset.top }, 0)
 }
