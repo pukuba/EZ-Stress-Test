@@ -158,6 +158,13 @@ pre code {
   right: 4%;
 }
 
+.error {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
 .error span {
   font-size: 3em;
   font-weight: 700px;

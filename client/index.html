@@ -11,7 +11,7 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Signika:wght@300;500&display=swap"
         rel="stylesheet">
@@ -22,7 +22,7 @@
 <body>
     <div class="main" style="width: 100%; height: 102%;" id="animated-background">
         <div id="wrapper">
-            <div class="logo">Server Overload Test</div>
+            <div class="logo">EZ Sterss Test</div>
             <div id="main">
                 <form method="post" id="forms">
                     <input type="text" name="address" class="address" placeholder="http(s)://www.example.com">
@@ -35,12 +35,11 @@
                     <input type="number" name="clientCount">
                 </form>
 
-                <div class="error" id="error" style="display: none;" onclick="x();">
+                <div class="error" id="error" style="display: none;">
                     <span id='close' onclick="this.parentNode.style.display = 'none';">&times;</span>
                     <span>Error</span><br><br>
 
-                    지속 시간은 30초보다 짧아야하고,<br>
-                    접속횟수 * 접속인원은 1000 보다 작야아한다.
+                    <div id="error_"></div>
                 </div>
             </div>
         </div>
